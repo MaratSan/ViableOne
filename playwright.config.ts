@@ -6,7 +6,7 @@ const config: PlaywrightTestConfig = {
   reporter: 'html',
   use: {
     ...devices['Desktop Chrome'],
-    headless: true,
+    headless: false,
     viewport: { width: 1280, height: 720 },
     ignoreHTTPSErrors: true,
     screenshot: 'only-on-failure',
