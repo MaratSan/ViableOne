@@ -28,4 +28,4 @@ jobs:
 
       - name: Run tests
         run: |
-          npx playwright test src/tests/contactForm.spec.ts
+          npx playwright test src/tests/formTest.spec.ts
