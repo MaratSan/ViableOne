@@ -26,6 +26,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install Playwright browsers
+        run: npx playwright install
+
       - name: Run tests
-        run: |
-          npx playwright test src/tests/formTest.spec.ts
+        run: npx playwright test src/tests/formTest.spec.ts
