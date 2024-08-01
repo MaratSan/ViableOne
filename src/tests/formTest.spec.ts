@@ -10,7 +10,7 @@ let page: Page;
 
 test.describe('Form Tests', () => {
     test.beforeAll(async () => {
-        const browser = await chromium.launch();
+        const browser = await chromium.launch({ headless: true });
         const context = await browser.newContext();
         page = await context.newPage();
         await page.goto('https://v1-web-git-test-viableone.vercel.app/kariera');
@@ -22,10 +22,9 @@ test.describe('Form Tests', () => {
 
     test('Check consent alert', async () => {
         const form = new FormComponent(page);
-        await form.fillForm('Test Name', 'test@example.com', '123456789', 'Test Message', '/Users/marat/Documents/projects/ViableOne/files/file.pdf');
+        await form.fillForm('Test Name', 'test@example.com', '123456789', 'Test Message', 'files/file.pdf');
         await form.submitForm();
         await page.waitForTimeout(4000);
-        await new Promise((resolve)=>setTimeout(resolve, 5000));
 
         const alertMessage = await form.checkAlertMessage();
         expect(alertMessage).toContain('Je třeba zaškrtnout políčko Souhlasím se zpracováním osobních údajů');
